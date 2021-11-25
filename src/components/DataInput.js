@@ -7,12 +7,12 @@ function DataInput(props) {
                  props.onAssetChanged(e.target.value)
             }}/> Euro</span>
         </Row>
-        <Row>
+        <Row className="mt-1">
             <span>Zinssatz <input type="number" step=".01" onChange={(e) => {
                 props.onInterestRateChanged(e.target.value)
             }}/> % p.a.</span>
         </Row>
-        <Row>
+        <Row className="mt-1">
             <span>Laufzeit <input type="number" onChange={(e) => {
                 props.onTermChanged(e.target.value)
             }}/> Jahre</span>
