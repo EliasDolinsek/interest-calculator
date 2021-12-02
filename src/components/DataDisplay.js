@@ -11,7 +11,7 @@ function DataDisplay(props) {
         <tbody>
             {props.interestCharges.map((e) => <tr>
                 <td>{e[0]}</td>
-                <td>{e[1]}</td>
+                <td>{e[1].toFixed(2)}</td>
             </tr>)}
         </tbody>
     </Table>

@@ -14,13 +14,17 @@ class App extends Component {
     }
 
     calculateInterestChargeOfYear(year) {
-        let interest = (this.asset * this.interestRate * (year + 1)) / 100;
-        return interest + this.asset;
+        let result = this.asset;
+        for (let i = 0; i <= year; i++) {
+            result += result * (this.interestRate / 100);
+        }
+
+        return result;
     }
 
     calculateInterestCharges() {
         let result = []
-        for (let i = 0; i < this.term; i++) {
+        for (let i = 1; i < this.term; i++) {
             result.push([i, this.calculateInterestChargeOfYear(i)])
         }
 
@@ -36,8 +40,10 @@ class App extends Component {
                                onTermChanged={(e) => this.term = parseInt(e)}/>
                 </div>
                 <Button className="mt-3" onClick={() => this.calculateInterestCharges()}>Calculate</Button>
-                {this.state.interestCharges.length !== 0 ?
-                    <DataDisplay interestCharges={this.state.interestCharges}/> : null}
+                <div className="mt-3">
+                    {this.state.interestCharges.length !== 0 ?
+                        <DataDisplay interestCharges={this.state.interestCharges}/> : null}
+                </div>
             </Container>
         );
     }
